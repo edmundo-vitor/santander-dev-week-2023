@@ -28,4 +28,10 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.save(userToCreate);
     }
+
+    @Override
+    public void delete(Long id) {
+        User user = userRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        userRepository.delete(user);
+    }
 }
